@@ -91,6 +91,40 @@ namespace API.Controllers
             return NoContent();
         }
 
-        
+        [HttpGet("GetC4")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetC4()
+        {
+            var entidad = await unitofwork.Productos.GetC4();
+            return mapper.Map<List<object>>(entidad);
+        }
+
+        [HttpGet("GetC5")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetC5()
+        {
+            var entidad = await unitofwork.Productos.GetC5();
+            return mapper.Map<List<object>>(entidad);
+        }
+
+        [HttpGet("GetC6")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetC6()
+        {
+            var entidad = await unitofwork.Productos.GetC6();
+            return mapper.Map<List<object>>(entidad);
+        }
+
+        [HttpGet("GetC10")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetC10()
+        {
+            var entidad = await unitofwork.Productos.GetC10();
+            return mapper.Map<List<object>>(entidad);
+        }
     }
 }

@@ -93,5 +93,30 @@ public class ClienteController : BaseApiController
     }
 
     //metodos especificos
+    [HttpGet("GetC2")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetC2()
+    {
+        var entidad = await unitofwork.Clientes.GetC2();
+        return mapper.Map<List<object>>(entidad);
+    }
 
+    [HttpGet("GetC7")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetC7()
+    {
+        var entidad = await unitofwork.Clientes.GetC7();
+        return mapper.Map<List<object>>(entidad);
+    }
+
+    [HttpGet("GetC8")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<object>>> GetC8()
+    {
+        var entidad = await unitofwork.Clientes.GetC8();
+        return mapper.Map<List<object>>(entidad);
+    }
 }

@@ -92,5 +92,13 @@ namespace API.Controllers
         }
 
         //metodos especificos
+        [HttpGet("GetC9")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<object>>> GetC9()
+        {
+            var entidad = await unitofwork.Empleados.GetC9();
+            return mapper.Map<List<object>>(entidad);
+        }
     }
 }

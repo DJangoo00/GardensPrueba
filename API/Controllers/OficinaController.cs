@@ -92,5 +92,13 @@ namespace API.Controllers
         }
         
         //especificos
+        [HttpGet("GetC3")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<IEnumerable<OficinaDto>>> GetC3()
+        {
+            var entidad = await unitofwork.Oficinas.GetC3();
+            return mapper.Map<List<OficinaDto>>(entidad);
+        }
     }
 }

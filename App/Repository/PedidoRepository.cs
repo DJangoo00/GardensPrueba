@@ -41,4 +41,5 @@ public class PedidoRepository : GenericRepository<Pedido>, IPedido
         ).ToListAsync();
         return result;
     }
+    
 }

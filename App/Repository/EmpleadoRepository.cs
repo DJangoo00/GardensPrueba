@@ -24,4 +24,27 @@ public class EmpleadoRepository : GenericRepository<Empleado>, IEmpleado
         return await _context.Empleados
             .FirstOrDefaultAsync(p =>  p.Id == id);
     }
+    //consultas
+
+    public async Task<IEnumerable<object>> GetC9()
+    {
+        var result = await (
+            from e in _context.Empleados
+            join j in _context.Empleados on e.IdJefe equals j.Id
+            where !_context.Clientes.Any(c => c.IdEmpleadoRepVentas == e.Id)
+            select new
+            {
+                IdEmpleado = e.Id,
+                Nombre = e.Nombre,
+                Apellido1 = e.Apellidol,
+                Apellido2 = e.Apellido2,
+                IdJefe = j.Id,
+                NombreJefe = j.Nombre,
+                Apellido1Jefe = j.Apellidol,
+                Apellido2Jefe = j.Apellido2,
+            }
+        )
+        .ToListAsync();
+        return result;
+    }
 }

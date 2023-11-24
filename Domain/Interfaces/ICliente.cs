@@ -8,6 +8,8 @@ namespace Domain.Interfaces
 {
     public interface ICliente : IGenericRepository<Cliente>
     {
-        
+        Task<IEnumerable<object>> GetC2();
+        Task<IEnumerable<object>> GetC7();
+        Task<IEnumerable<object>> GetC8();
     }
 }

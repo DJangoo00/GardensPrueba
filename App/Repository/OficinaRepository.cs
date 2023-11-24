@@ -25,4 +25,19 @@ public class OficinaRepository : GenericRepositoryStr<Oficina>, IOficina
             .FirstOrDefaultAsync(p =>  p.Id == id);
     }
     //Demas Metodos
+    public async Task<IEnumerable<object>> GetC3()
+    {
+        var result = await (
+            from o in _context.Oficinas
+            join e in _context.Empleados on o.Id equals e.IdOficina
+            join c in _context.Clientes on e.Id equals c.IdEmpleadoRepVentas
+            join p in _context.Pedidos on c.Id equals p.IdCliente
+            join dp in _context.DetallesPedidos on p.Id equals dp.IdPedido
+            join pd in _context.Productos on dp.IdProducto equals pd.Id
+            where pd.Gama != "Frutales"
+            select o
+        )
+        .ToListAsync();
+        return result;
+    }
 }
